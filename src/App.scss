@@ -1,0 +1,23 @@
+.app {
+  background: url("./assets/cold-bg.jpg");
+  background-position: bottom;
+  background-size: cover;
+  transition: 0.4 ease-out;
+}
+
+.app.warm {
+  background: url("./assets/warm-bg.jpg");
+  background-position: bottom;
+  background-size: cover;
+  transition: 0.4 ease-out;
+}
+
+main {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.75)
+  );
+}

@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import "./App.scss";
+import Information from "./components/Information/information";
+import Search from "./components/Search/search";
+import Temperature from "./components/Temperature/temperature";
 
 function App() {
+  const [query, setQuery] = useState("");
+  const [weather, setWeather] = useState({});
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className={
+        typeof weather.main != "undefined"
+          ? weather.main.temp > 16
+            ? "app warm"
+            : "app"
+          : "app"
+      }
+    >
+      <main>
+        <Search query={query} setQuery={setQuery} setWeather={setWeather} />
+        {typeof weather.main != "undefined" ? (
+          <>
+            <Information weather={weather} />
+            <Temperature weather={weather} />
+          </>
+        ) : (
+          ""
+        )}
+      </main>
     </div>
   );
 }
